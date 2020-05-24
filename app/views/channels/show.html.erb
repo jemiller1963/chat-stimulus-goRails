@@ -1,0 +1,47 @@
+<div class="grid grid-cols-3 gap-4" data-controller="channel" data-channel-id="<%= @channel.id %>">
+
+  <div>
+    <h2>Channels</h2>
+    <%= link_to '+', new_channel_path %>
+    <ul>
+      <% Channel.all.each do |channel| %>
+        <li> 
+          <%= link_to channel.name, channel %>
+          <% if current_user.channels.include?(channel) %>
+            <%= link_to 'X', channel_channel_users_path(channel), method: :delete %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <hr>
+    <div>
+      <h2>Users</h2>
+      <ul>
+        <% @channel.users.each do |user| %>
+          <li>
+            <%= user.name %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-pink-100 col-span-2">
+    <div> Channel:<strong><%= @channel.name %></strong></div>
+    <div class="mt-5">
+      <div data-target="channel.messages">
+        <%= render @channel.messages.order(created_at: :desc).limit(10).reverse %>
+      </div>
+      <% if current_user.channels.include?(@channel) %>
+        <%= form_with model:[@channel, Message.new], 
+          data: { action: "ajax:success->channel#clearMessage" } do |form| %>
+          <%= form.text_field :body,
+            data: { target: "channel.newMessage" }, class: 'shadow appearance-none border rounded w-full py-2 px-3 mt-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+        <% end %>
+      <% else %>
+        <%= link_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
