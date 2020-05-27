@@ -28,11 +28,12 @@
       <% end %>
     <% end %>
 
+
     <header class="mb-4">
-      <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-700 bg-gray-100 border-b border-gray-400 lg:px-10">
+      <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-700 bg-orange-400 border-b border-orange-00 lg:px-10">
         <div class="flex items-center mr-6 flex-no-shrink">
           <%= link_to root_path, class:"link text-xl tracking-tight font-semibold" do %>
-            <h1 class="title is-5"><%= Rails.configuration.application_name %></h1>
+              <h1 class="title is-5"><%= Rails.configuration.application_name %></h1>
           <% end  %>
         </div>
         <div class="block lg:hidden">
@@ -41,21 +42,31 @@
           </button>
         </div>
         <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
-          <div class="lg:flex-grow">
-            <%= link_to 'New Channel', new_channel_path, class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+          <div class="ml-25 lg:flex-grow">
+            <%= link_to "Explore", '#', class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+            <%= link_to "Happenings", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+            <%= link_to "Hangout", channels_path, class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+            <%= link_to "Blog", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
           </div>
           <div class="block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
             <% if user_signed_in? %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-default block" %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
-            <% else %>
-              <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
-              <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
-            <% end %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-default mr-2 block" %>
+            <%= link_to "My Notes", "#", class:"btn btn-default mr-2 block" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-default mr-2 mb-2 lg:mr-2 lg:mb-0 block" %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class:"btn btn-default mr-2 mb-2 lg:mr-2 lg:mb-0 block" %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default mr-2 block" %>
+          <% end %>
           </div>
         </div>
       </nav>
     </header>
+
+
+
+
+
+
 
     <main class="px-4 lg:px-10">
       <%= content_for?(:content) ? yield(:content) : yield %>

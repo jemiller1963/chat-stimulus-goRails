@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="max-w-lg overflow-hidden rounded shadow-lg">
+  <div class="px-6 py-4">
 
-<h1>Channels</h1>
+    <h1>Hangouts</h1>
 
-<ul>
-  <% @channels.each do |channel| %>
-    <li> <%= link_to channel.name, channel_path(channel)  %></li>
-  <% end %>
-</ul>
+
+    <% @channels.each do |channel| %>
+      <p> <%= link_to channel.name, channel_path(channel)  %></p>
+    <% end %>
+
+    <p class="mt-5"><%= link_to 'New Hangout', new_channel_path, class: 'btn btn-default' %></p>
+  </div>
+</div>

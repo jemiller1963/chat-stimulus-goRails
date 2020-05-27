@@ -1,37 +1,47 @@
-<div class="grid grid-cols-3 gap-4" data-controller="channel" data-channel-id="<%= @channel.id %>">
+<div class='flex' data-controller="channel" data-channel-id="<%= @channel.id %>">
+  <div id="nav_section" class="fixed left-0 w-64 px-4 py-2 m-2 text-gray-700">
 
-  <div>
-    <h2>Channels</h2>
-    <%= link_to '+', new_channel_path %>
-    <ul>
+    <div id="left_nav">
+      <div class="mb-2">
+        <h2>Hangouts&nbsp;<%= link_to '+', new_channel_path %></h2> 
+      </div>
       <% Channel.all.each do |channel| %>
-        <li> 
+        <div>
           <%= link_to channel.name, channel %>
           <% if current_user.channels.include?(channel) %>
             <%= link_to 'X', channel_channel_users_path(channel), method: :delete %>
           <% end %>
-        </li>
+        </div>
       <% end %>
-    </ul>
-    <hr>
-    <div>
-      <h2>Users</h2>
-      <ul>
-        <% @channel.users.each do |user| %>
-          <li>
+
+      <div class="mt-5">
+        <h2>Active Users</h2>
+        <% if @channel.users.any? %>
+          <ul>
+          <% @channel.users.each do |user| %>
+            <li>
             <%= user.name %>
-          </li>
+            </li>
           <% end %>
-      </ul>
+          </ul>
+        <% else %>
+          No users yet
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="bg-pink-100 col-span-2">
-    <div> Channel:<strong><%= @channel.name %></strong></div>
-    <div class="mt-5">
-      <div data-target="channel.messages">
-        <%= render @channel.messages.order(created_at: :desc).limit(10).reverse %>
-      </div>
+
+
+
+
+
+  <div id="content_section" class="right-0 flex-1 py-2 pl-40 m-2 text-gray-700">
+    <div data-target="channel.messages">
+      <%= render @channel.messages.order(created_at: :desc).limit(100).reverse %>
+    </div>
+
+    <div class="sticky bottom-0 bg-white">
       <% if current_user.channels.include?(@channel) %>
         <%= form_with model:[@channel, Message.new], 
           data: { action: "ajax:success->channel#clearMessage" } do |form| %>
