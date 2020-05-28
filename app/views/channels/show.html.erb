@@ -38,7 +38,7 @@
 
   <div id="content_section" class="right-0 flex-1 py-2 pl-40 m-2 text-gray-700">
     <div data-target="channel.messages">
-      <%= render @channel.messages.order(created_at: :desc).limit(100).reverse %>
+      <%= render @channel.messages.order(created_at: :desc).limit(20).reverse %>
     </div>
 
     <div class="sticky bottom-0 bg-white">

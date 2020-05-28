@@ -1,13 +1,16 @@
-<div class="max-w-lg overflow-hidden rounded shadow-lg">
-  <div class="px-6 py-4">
 
-    <h1>Hangouts</h1>
+<div class="flex items-center justify-center">
+  <div class="w-1/2 max-w-lg overflow-hidden rounded shadow-lg">
+    <div class="px-6 py-4">
+
+      <h1>Hangouts</h1>
 
 
-    <% @channels.each do |channel| %>
-      <p> <%= link_to channel.name, channel_path(channel)  %></p>
-    <% end %>
+      <% @channels.each do |channel| %>
+        <p> <%= link_to channel.name, channel_path(channel)  %></p>
+      <% end %>
 
-    <p class="mt-5"><%= link_to 'New Hangout', new_channel_path, class: 'btn btn-default' %></p>
+      <p class="mt-5"><%= link_to 'New Hangout', new_channel_path, class: 'btn btn-default' %></p>
+    </div>
   </div>
 </div>
