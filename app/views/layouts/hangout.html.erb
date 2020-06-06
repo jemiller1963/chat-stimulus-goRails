@@ -29,38 +29,526 @@
     <% end %>
 
 
-    <header class="mb-4">
-      <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-700 bg-orange-400 border-b border-orange-00 lg:px-10">
-        <div class="flex items-center mr-6 flex-no-shrink">
-          <%= link_to root_path, class:"link text-xl tracking-tight font-semibold" do %>
-              <h1 class="title is-5"><%= Rails.configuration.application_name %> test</h1>
-          <% end  %>
+
+
+    <div class="flex flex-col flex-1 h-screen min-h-screen ">
+      <div class="flex flex-col">
+        <div class="flex-1 bg-meetup-purple">Top Menu Ipsum consectetur ullam facilis quae ipsum est Ducimus ipsam vero accusamus quis omnis saepe corrupti ipsa Expedita esse accusamus repellendus aspernatur nobis Eveniet eos nulla accusamus a ipsa Sapiente iure labore dolorum voluptates id Consectetur deserunt doloremque soluta fugit molestiae Temporibus porro possimus blanditiis quia nobis rerum, at quibusdam? Vitae</div>
+      </div>
+      <div class="flex h-12 text-gray-100">
+        <div class="flex items-center justify-between flex-none w-56 px-3 py-2 bg-gray-800 border-b border-gray-900">
+          <div>TailwindCSS</div>
+          <button><i class="fa fa-chevron-down"></i></button>
         </div>
-        <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 border border-gray-500 rounded text-grey hover:text-gray-600 hover:border-gray-600">
-            <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-          </button>
-        </div>
-        <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
-          <div class="ml-25 lg:flex-grow">
-            <%= link_to "Explore", '#', class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
-            <%= link_to "Happenings", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
-            <%= link_to "Hangout", channels_path, class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
-            <%= link_to "Blog", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+
+        <div class="flex items-center justify-between flex-1 px-4 bg-gray-700 border-b border-gray-800">
+          <div class="flex items-center">
+            <div class="text-2xl text-gray-500">#</div>
+            <div class="ml-2 text-sm text-gray-100">general</div>
+            <div class="pl-3 ml-3 text-xs text-gray-400 border-l border-gray-600">general discussion of TailwindCSS</div>
           </div>
-          <div class="block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
-            <% if user_signed_in? %>
-            <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-default mr-2 block" %>
-            <%= link_to "My Notes", "#", class:"btn btn-default mr-2 block" %>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-default mr-2 mb-2 lg:mr-2 lg:mb-0 block" %>
-          <% else %>
-            <%= link_to "Login", new_user_session_path, class:"btn btn-default mr-2 mb-2 lg:mr-2 lg:mb-0 block" %>
-            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default mr-2 block" %>
-          <% end %>
+          <div class="flex items-center justify-between">
+            <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-bell hover:text-gray-200"></i></a>
+            <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-users hover:text-gray-200" aria-hidden="true"></i></a>
+            <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-at hover:text-gray-200" aria-hidden="true"></i></a>
+            <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-question-circle hover:text-gray-200" aria-hidden="true"></i></a>
+            <a class="ml-4" href="#">
+              <form action="#" class="relative">
+                <input class="px-2 py-1 text-xs text-gray-200 bg-gray-900 rounded" type="text" placeholder="Search">
+                <span class="absolute top-0 right-0 mr-4" style="top:3px"><i class="w-2 h-2 text-gray-500 fa fa-search hover:text-gray-200"></i></span>
+              </form>
+            </a>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+      <div class="flex flex-1 overflow-y-hidden">
+        <div class="flex flex-col justify-between flex-none w-56 bg-gray-800">
+
+          <div class="overflow-y-auto text-xs hashtag-bar">
+            <ul class="px-2 py-3">
+              <li class="px-2 hover:bg-gray-900">
+                <a class="flex items-center text-gray-500 hover:text-gray-300" href="#"><span class="text-xs"># welcome</span></a>
+              </li>
+              <li class="px-2 hover:bg-gray-900">
+                <a class="flex items-center text-gray-200 hover:text-gray-300" href="#"><span class="text-xs"># faq</span></a>
+              </li>
+            </ul>
+
+            <button class="flex items-center px-4 py-3 text-gray-500 hover:text-gray-200">
+              <i class="fa fa-chevron-down"></i>&nbsp;<h3 class="text-xs font-semibold tracking-wide uppercase">TailwindCSS</h3>
+            </button>
+            <ul class="px-2">
+
+              <li class="px-2 hover:bg-gray-900">
+                <a class="flex items-center text-gray-500 hover:text-gray-300" href="#"><span class="text-xs"># general</span></a>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="flex items-center justify-between px-2 py-2 bg-gray-900">
+            <div class="flex items-center">
+              <a href="#" class="w-8 h-8 rounded-full"><%= image_pack_tag "buddyIcon.jpg", class: "w-8 h-8 rounded-full", alt: "test" %></a>
+              <div class="ml-2 text-xs">
+                <div class="text-white">jem</div>
+                <div class="text-xs text-gray-500">#333</div>
+              </div>
+            </div>
+            <div class="flex items-center text-gray-500">
+              <a class="text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-microphone"></i></a>
+              <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-headphones"></i></a>
+              <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-cog"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between flex-1">
+          <div class="flex flex-col justify-between flex-1 bg-gray-700">
+            <div class="overflow-y-auto text-sm text-gray-400 chat">
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+              <!-- START -->
+              <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
+                <div class="flex-none">
+                  <a href="#">
+                    <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-10 h-10 rounded-full" %>
+                  </a>
+                </div>
+                <div class="ml-5">
+                  <div>
+                    <a class="text-white hover:underline" href="#">jem</a>
+                    <span class="ml-1 text-xs text-gray-600">06/03/2020</span>
+                  </div>
+                  <div>Qui ipsorum lingua Celtae, nostra Galli appellantur. Prima luce, cum quibus mons aliud consensu ab eo.</div>
+                  <div>Quo usque tandem abutere, Catilina, patientia nostra? Magna pars studiorum, prodita quaerimus.</div>
+                </div>
+              </div>
+              <!-- END -->
+            </div>
+            <div class="flex items-center h-32 mx-3 bg-gray-700 border-t border-gray-600">
+              <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 border-r border-gray-700 rounded-l hover:text-white">
+                <i class="w-6 h-6 fas fa-plus-circle"></i>
+              </button>
+              <div class="flex-1"><input class="w-full h-10 px-2 py-2 text-sm text-gray-200 bg-gray-600 focus:outline-none" type="text"></div>
+              <div class="flex items-center h-10 px-2 py-2 bg-gray-600 rounded-r">
+
+                <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-white">
+                  <i class="w-6 h-6 fas fa-gift"></i>
+                </button>
+                <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-white">
+                  <i class="w-6 h-6 fas fa-image"></i>
+                </button>
+                <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-yellow-500">
+                  <i class="w-6 h-6 fas fa-smile"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex-none w-56 px-3 py-3 overflow-y-auto bg-gray-800 sidebar-users">
+            <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Core Team - 1</h3>
+            <ul class="mb-6">
+              <li class="h-8 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+            </ul>
+            <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Online - 10</h3>
+
+            <ul class="mb-6">
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+
+              <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+                <div class="flex items-center pt-1 ml-2">
+                  <div>
+                    <a class="" href="#">
+                      <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+                    </a>
+                  </div>
+                  <div class="ml-2 text-xs">ericmiller</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -68,8 +556,8 @@
 
 
 
-    <main class="px-4 lg:px-10">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
+
+
+
+
   </body>
-</html>
