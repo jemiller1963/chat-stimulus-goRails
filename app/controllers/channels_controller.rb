@@ -71,6 +71,6 @@ class ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def channel_params
-      params.require(:channel).permit(:name)
+      params.require(:channel).permit(:name, :desc)
     end
 end
