@@ -1,57 +1,142 @@
-<div class='flex' data-controller="channel" data-channel-id="<%= @channel.id %>">
-  <div id="nav_section" class="fixed left-0 w-64 px-4 py-2 m-2 text-gray-700">
 
-    <div id="left_nav">
-      <div class="mb-2">
-        <h2>Hangouts&nbsp;<%= link_to '+', new_channel_path %></h2> 
-      </div>
-      <% Channel.all.each do |channel| %>
-        <div>
-          <%= link_to channel.name, channel %>
-          <% if current_user.channels.include?(channel) %>
-            <%= link_to 'X', channel_channel_users_path(channel), method: :delete %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div class="mt-5">
-        <h2>Active Users</h2>
-        <% if @channel.users.any? %>
-          <ul>
-          <% @channel.users.each do |user| %>
-            <li>
-            <%= user.name %>
-            </li>
-          <% end %>
-          </ul>
-        <% else %>
-          No users yet
-        <% end %>
-      </div>
-    </div>
+<%# SECOND NAV BAR %>
+<div class="flex h-12 text-gray-100"> 
+  <div class="flex items-center justify-between flex-none w-56 px-3 py-2 bg-gray-800 border-b border-gray-900"> 
+    <div>Hangouts</div>
+    <button><i class="fa fa-chevron-down"></i></button>
   </div>
 
-
-
-
-
-
-  <div id="content_section" class="right-0 flex-1 py-2 pl-40 m-2 text-gray-700">
-    <div data-target="channel.messages">
-      <%= render @channel.messages.order(created_at: :desc).limit(20).reverse %>
+  <div class="flex items-center justify-between flex-1 px-4 bg-gray-700 border-b border-gray-800">
+    <div class="flex items-center">
+      <div class="text-2xl text-gray-500">#</div>
+      <div class="ml-2 text-sm text-gray-100">
+        <%= @channel.name %>
+      </div>
+      <div class="pl-3 ml-3 text-xs text-gray-400 border-l border-gray-600">
+        <%= @channel.desc %>
+      </div>
     </div>
-
-    <div class="sticky bottom-0 bg-white">
-      <% if current_user.channels.include?(@channel) %>
-        <%= form_with model:[@channel, Message.new], 
-          data: { action: "ajax:success->channel#clearMessage" } do |form| %>
-          <%= form.text_field :body,
-            data: { target: "channel.newMessage" }, class: 'shadow appearance-none border rounded w-full py-2 px-3 mt-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
-        <% end %>
-      <% else %>
-        <%= link_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post %>
-      <% end %>
+    <div class="flex items-center justify-between">
+      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-bell hover:text-gray-200"></i></a>
+      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-users hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-at hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-question-circle hover:text-gray-200" aria-hidden="true"></i></a>
     </div>
-
   </div>
 </div>
+<%# END OF SECOND NAV BAR %>
+
+<div class="flex flex-1 overflow-y-hidden">
+  <%# START OF LEFT NAV BAR %>
+  <div class="flex flex-col justify-between flex-none w-56 bg-gray-800">
+
+    <div class="overflow-y-auto text-xs hashtag-bar">
+      <% Channel.all.each do |channel| %>
+        <%= link_to channel.name, channel, class: "flex items-center px-4 py-3 text-gray-500 hover:text-gray-200" %>
+        <% if current_user.channels.include?(channel) %>
+          <%= link_to icon('fa', 'times-circle'), channel_channel_users_path(channel), class: "text-gray-500 hover:text-gray-300", method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex items-center justify-between px-2 py-2 bg-gray-900">
+      <div class="flex items-center">
+        <a href="#" class="w-8 h-8 rounded-full"><%= image_pack_tag "buddyIcon.jpg", class: "w-8 h-8 rounded-full", alt: "test" %></a>
+        <div class="ml-2 text-xs">
+          <div class="text-white">jem</div>
+          <div class="text-xs text-gray-500">#333</div>
+        </div>
+      </div>
+      <div class="flex items-center text-gray-500">
+        <a class="text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-microphone"></i></a>
+        <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-headphones"></i></a>
+        <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-cog"></i></a>
+      </div>
+    </div>
+  </div>
+  <%# END OF LEFT NAV BAR %>
+
+
+
+  <div class="flex justify-between flex-1">
+
+    <%# START OF CENTER SECTION %>
+    <div data-controller="channel" data-channel-id="<%= @channel.id %>"id="content_section" class="flex flex-col justify-between flex-1 bg-gray-700">
+      <div class="overflow-y-auto text-sm text-gray-400 chat">
+        <p><%= @channel.messages.count %></p>
+        <div data-target="channel.messages">
+          <%= render @channel.messages.order(created_at: :desc).limit(20).reverse %>
+        </div>
+        <!-- START -->
+        <!-- END -->
+      </div>
+      <div class="flex items-center h-32 mx-3 bg-gray-700 border-t border-gray-600">
+        <% if current_user.channels.include?(@channel) %>
+          <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 border-r border-gray-700 rounded-l hover:text-white">
+            <i class="w-6 h-6 fas fa-plus-circle"></i>
+          </button>
+          <div class="flex-1">
+            <%= form_with model:[@channel, Message.new], 
+              data: { action: "ajax:success->channel#clearMessage" } do |form| %>
+              <%= form.text_field :body, data: { target: "channel.newMessage" },
+                class: 'w-full h-10 px-2 py-2 text-sm text-gray-200 bg-gray-600 focus:outline-none' %>
+            <% end %>
+          <% else %>
+            <%= link_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post %>
+          <% end %>
+          </div>
+          <div class="flex items-center h-10 px-2 py-2 bg-gray-600 rounded-r">
+
+            <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-white">
+              <i class="w-6 h-6 fas fa-gift"></i>
+            </button>
+            <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-white">
+              <i class="w-6 h-6 fas fa-image"></i>
+            </button>
+            <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 rounded-l hover:text-yellow-500">
+              <i class="w-6 h-6 fas fa-smile"></i>
+            </button>
+          </div>
+      </div>
+    </div>
+    <%# END OF CENTER SECTION %>
+
+    <%# START OF RIGHT USERS BAR %>
+    <div class="flex-none w-56 px-3 py-3 overflow-y-auto bg-gray-800 sidebar-users">
+      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Core Team - 1</h3>
+      <ul class="mb-6">
+        <li class="h-8 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+          <div class="flex items-center pt-1 ml-2">
+            <div>
+              <a class="" href="#">
+                <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+              </a>
+            </div>
+            <div class="ml-2 text-xs">ericmiller</div>
+          </div>
+        </li>
+      </ul>
+      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Online - 10</h3>
+
+      <ul class="mb-6">
+        <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+          <div class="flex items-center pt-1 ml-2">
+            <div>
+              <a class="" href="#">
+                <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
+              </a>
+            </div>
+            <div class="ml-2 text-xs">ericmiller</div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    <%# END OF RIGHT USERS BAR %>
+  </div>
+</div>
+</div>
+
+
+
+

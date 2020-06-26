@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails', '~> 6.0', '>= 6.0.2.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 group :development, :test do
