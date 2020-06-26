@@ -65,7 +65,7 @@
       <div class="overflow-y-auto text-sm text-gray-400 chat">
         <p><%= @channel.messages.count %></p>
         <div data-target="channel.messages">
-          <%= render @channel.messages.order(created_at: :desc).limit(20).reverse %>
+          <%= render @channel.messages.order(created_at: :desc).reverse %>
         </div>
         <!-- START -->
         <!-- END -->
