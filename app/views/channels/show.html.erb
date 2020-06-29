@@ -31,12 +31,16 @@
   <div class="flex flex-col justify-between flex-none w-56 bg-gray-800">
 
     <div class="overflow-y-auto text-xs hashtag-bar">
-      <% Channel.all.each do |channel| %>
-        <%= link_to channel.name, channel, class: "flex items-center px-4 py-3 text-gray-500 hover:text-gray-200" %>
-        <% if current_user.channels.include?(channel) %>
-          <%= link_to icon('fa', 'times-circle'), channel_channel_users_path(channel), class: "text-gray-500 hover:text-gray-300", method: :delete %>
+      <div class="flex flex-col">
+        <% Channel.all.each do |channel| %>
+          <div class="flex flex-row items-center">
+            <%= link_to channel.name, channel, class: "px-4 py-3 text-gray-500 hover:text-gray-200" %>
+            <% if current_user.channels.include?(channel) %>
+              <%= link_to icon('fa', 'times-circle'), channel_channel_users_path(channel), class: "text-gray-500 hover:text-gray-300", method: :delete %>
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
 
     <div class="flex items-center justify-between px-2 py-2 bg-gray-900">
@@ -64,13 +68,13 @@
     <div data-controller="channel" data-channel-id="<%= @channel.id %>"id="content_section" class="flex flex-col justify-between flex-1 bg-gray-700">
       <div class="overflow-y-auto text-sm text-gray-400 chat">
         <p><%= @channel.messages.count %></p>
-        <div data-target="channel.messages">
+        <div id="messages_list" data-target="channel.messages">
           <%= render @channel.messages.order(created_at: :desc).reverse %>
         </div>
         <!-- START -->
         <!-- END -->
       </div>
-      <div class="flex items-center h-32 mx-3 bg-gray-700 border-t border-gray-600">
+      <div class="flex items-center h-56 pt-1 pb-1 mx-3 bg-gray-700">
         <% if current_user.channels.include?(@channel) %>
           <button class="h-10 px-2 py-2 text-gray-500 bg-gray-600 border-r border-gray-700 rounded-l hover:text-white">
             <i class="w-6 h-6 fas fa-plus-circle"></i>
