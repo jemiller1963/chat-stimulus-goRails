@@ -12,6 +12,8 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   # GET /channels/1.json
   def show
+    @admins = User.admins
+    @nonadmins = User.nonadmins
   end
 
   # GET /channels/new

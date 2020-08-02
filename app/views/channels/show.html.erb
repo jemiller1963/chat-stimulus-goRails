@@ -1,7 +1,7 @@
 
 <%# SECOND NAV BAR %>
-<div class="flex h-12 text-gray-100"> 
-  <div class="flex items-center justify-between flex-none w-56 px-3 py-2 bg-gray-800 border-b border-gray-900"> 
+<div class="flex h-12 text-gray-100">
+  <div class="flex items-center justify-between flex-none w-56 px-3 py-2 bg-gray-800 border-b border-gray-900">
     <div>Hangouts</div>
     <button><i class="fa fa-chevron-down"></i></button>
   </div>
@@ -17,10 +17,11 @@
       </div>
     </div>
     <div class="flex items-center justify-between">
-      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-bell hover:text-gray-200"></i></a>
-      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-users hover:text-gray-200" aria-hidden="true"></i></a>
-      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-at hover:text-gray-200" aria-hidden="true"></i></a>
-      <a class="ml-4" href="#"><i class="w-6 h-6 text-gray-500 fa fa-question-circle hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#" title="Notifications"><i class="w-6 h-6 text-gray-500 fa fa-bell hover:text-gray-200"></i></a>
+      <a class="ml-4" href="#" title="Invite a friend"><i class="w-6 h-6 text-gray-500 fa fa-user-plus hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#" title="Inbox"><i class="w-6 h-6 text-gray-500 fa fa-inbox hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#" title="Help"><i class="w-6 h-6 text-gray-500 fa fa-question-circle hover:text-gray-200" aria-hidden="true"></i></a>
+      <a class="ml-4" href="#" title="Profile"><i class="w-6 h-6 text-gray-500 fas fa-cog hover:text-gray-200"></i></a>
     </div>
   </div>
 </div>
@@ -45,16 +46,19 @@
 
     <div class="flex items-center justify-between px-2 py-2 bg-gray-900">
       <div class="flex items-center">
-        <a href="#" class="w-8 h-8 rounded-full"><%= image_pack_tag "buddyIcon.jpg", class: "w-8 h-8 rounded-full", alt: "test" %></a>
+        <a href="#" class="w-8 h-8 rounded-full">
+
+          <%= gravatar_image_tag(current_user.email, alt: current_user.name, class: 'w-8 h-8 border border-gray-700 rounded-full') %>
+
+        </a>
+
+
         <div class="ml-2 text-xs">
-          <div class="text-white">jem</div>
+          <div class="text-white"><%= current_user.name %></div>
           <div class="text-xs text-gray-500">#333</div>
         </div>
       </div>
       <div class="flex items-center text-gray-500">
-        <a class="text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-microphone"></i></a>
-        <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-headphones"></i></a>
-        <a class="ml-3 text-gray-500 hover:text-gray-300" href="#"><i class="w-5 h-5 fas fa-cog"></i></a>
       </div>
     </div>
   </div>
@@ -67,7 +71,6 @@
     <%# START OF CENTER SECTION %>
     <div data-controller="channel" data-channel-id="<%= @channel.id %>"id="content_section" class="flex flex-col justify-between flex-1 bg-gray-700">
       <div class="overflow-y-auto text-sm text-gray-400 chat">
-        <p><%= @channel.messages.count %></p>
         <div id="messages_list" data-target="channel.messages">
           <%= render @channel.messages.order(created_at: :desc).reverse %>
         </div>
@@ -80,13 +83,19 @@
             <i class="w-6 h-6 fas fa-plus-circle"></i>
           </button>
           <div class="flex-1">
-            <%= form_with model:[@channel, Message.new], 
+            <%= form_with model:[@channel, Message.new],
               data: { action: "ajax:success->channel#clearMessage" } do |form| %>
               <%= form.text_field :body, data: { target: "channel.newMessage" },
                 class: 'w-full h-10 px-2 py-2 text-sm text-gray-200 bg-gray-600 focus:outline-none' %>
             <% end %>
           <% else %>
-            <%= link_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post %>
+            <div class="flex items-center justify-around w-full">
+              <div class="w-1/4">&nbsp;</div>
+              <div class="w-1/2">
+                <%= button_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full" %>
+              </div>
+              <div class="w-1/4">&nbsp;</div>
+            </div>
           <% end %>
           </div>
           <div class="flex items-center h-10 px-2 py-2 bg-gray-600 rounded-r">
@@ -107,34 +116,52 @@
 
     <%# START OF RIGHT USERS BAR %>
     <div class="flex-none w-56 px-3 py-3 overflow-y-auto bg-gray-800 sidebar-users">
-      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Core Team - 1</h3>
-      <ul class="mb-6">
-        <li class="h-8 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
-          <div class="flex items-center pt-1 ml-2">
-            <div>
-              <a class="" href="#">
-                <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
-              </a>
-            </div>
-            <div class="ml-2 text-xs">ericmiller</div>
-          </div>
-        </li>
-      </ul>
-      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Online - 10</h3>
+      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Site Admins Online:&nbsp; <%= @channel.users.admins.count %></h3>
 
-      <ul class="mb-6">
-        <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
-          <div class="flex items-center pt-1 ml-2">
-            <div>
-              <a class="" href="#">
-                <%= image_pack_tag "buddyIcon.jpg", alt: "jem", class: "w-6 h-6 rounded-full" %>
-              </a>
-            </div>
-            <div class="ml-2 text-xs">ericmiller</div>
-          </div>
-        </li>
 
-      </ul>
+      <% if @channel.users.admins.any? %>
+        <ul class="mb-6">
+          <% @channel.users.admins.each do |admin| %>
+            <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+              <div class="flex items-center pt-1 ml-2">
+                <div>
+                  <a class="" href="#"><%= gravatar_image_tag(admin.email, alt: admin.name, class: 'w-8 h-8 border border-gray-700 rounded-full') %>
+                  </a>
+                </div>
+                <div class="ml-2 text-xs"><%= admin.username %></div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No admins yet</p>
+      <% end %>
+
+
+
+
+
+
+
+      <h3 class="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Online - <%= @channel.users.nonadmins.count %></h3>
+
+      <% if @channel.users.nonadmins.any? %>
+        <ul class="mb-6">
+          <% @channel.users.nonadmins.each do |user| %>
+            <li class="h-8 mb-1 text-gray-500 hover:text-gray-200 hover:bg-gray-700">
+              <div class="flex items-center pt-1 ml-2">
+                <div>
+                  <a class="" href="#"><%= gravatar_image_tag(user.email, alt: user.name, class: 'w-8 h-8 border border-gray-700 rounded-full') %>
+                  </a>
+                </div>
+                <div class="ml-2 text-xs"><%= user.username %></div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-gray-300">No users yet</p>
+      <% end %>
     </div>
     <%# END OF RIGHT USERS BAR %>
   </div>

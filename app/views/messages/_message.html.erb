@@ -2,7 +2,8 @@
 <div class="flex py-4 mx-6 my-3 border-b border-gray-800">
   <div class="flex-none">
     <a href="#">
-      <%= image_pack_tag "buddyIcon.jpg", alt: "#{message.user.username}", class: "w-10 h-10 rounded-full" %>
+
+          <%= gravatar_image_tag(message.user.email, alt: message.user.username, class: 'w-10 h-10 border border-gray-700 rounded-full') %>
     </a>
   </div>
   <div class="ml-5">

@@ -1,4 +1,8 @@
 // headings
 h1, h2, h2, h4 {
   @apply font-black;
+  font-family: 'Roboto';
+}
+h2 {
+  @apply text-3xl;
 }

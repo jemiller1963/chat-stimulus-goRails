@@ -148,6 +148,8 @@ module.exports = {
       xl: "1280px",
     },
     fontFamily: {
+      display: ["Roboto", "sans-serif"],
+      body: ["Roboto", "sans-serif"],
       sans: [
         "-apple-system",
         "BlinkMacSystemFont",
@@ -171,6 +173,8 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      galada: ["Galada"],
+      niramit: ["Niramit"],
     },
     fontSize: {
       xs: "0.75rem",
