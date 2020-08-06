@@ -1,4 +1,5 @@
 class ChannelsController < ApplicationController
+  layout 'hangout'
   before_action :authenticate_user!
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
@@ -11,6 +12,8 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   # GET /channels/1.json
   def show
+    @admins = User.admins
+    @nonadmins = User.nonadmins
   end
 
   # GET /channels/new
@@ -70,6 +73,6 @@ class ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def channel_params
-      params.require(:channel).permit(:name)
+      params.require(:channel).permit(:name, :desc)
     end
 end

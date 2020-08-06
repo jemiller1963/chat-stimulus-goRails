@@ -1,9 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="flex items-center justify-center">
+  <div class="w-1/2 max-w-lg overflow-hidden border border-red-500">
+    <div class="px-6 py-4 text-lg">
 
-<h1>Channels</h1>
+      <h2>Hangouts</h2>
+      <p class="mb-6">Please join one of our Hangouts or create a new one.</p>
+      <div>
+        <% @channels.each do |channel| %>
+          <p> <%= link_to channel.name, channel_path(channel)  %></p>
+        <% end %>
 
-<ul>
-  <% @channels.each do |channel| %>
-    <li> <%= link_to channel.name, channel_path(channel)  %></li>
-  <% end %>
-</ul>
+      </div>
+
+      <p class="w-full mt-5 text-center border border-blue-500"><%= link_to 'New Hangout', new_channel_path, 
+        class:  'w-1/2 font-semibold text-sm py-2 px-4 rounded cursor-pointer no-underline bg-white border border-gray-400 text-gray-700'
+
+        %></p>
+
+    </div>
+  </div>
+</div>

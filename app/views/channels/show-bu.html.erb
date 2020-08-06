@@ -1,0 +1,57 @@
+<div class='flex' data-controller="channel" data-channel-id="<%= @channel.id %>">
+  <div id="nav_section" class="fixed left-0 w-64 px-4 py-2 m-2 text-gray-700">
+
+    <div id="left_nav">
+      <div class="mb-2">
+        <h2>Hangouts&nbsp;<%= link_to '+', new_channel_path %></h2> 
+      </div>
+      <% Channel.all.each do |channel| %>
+        <div>
+          <%= link_to channel.name, channel %>
+          <% if current_user.channels.include?(channel) %>
+            <%= link_to 'X', channel_channel_users_path(channel), method: :delete %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mt-5">
+        <h2>Active Users</h2>
+        <% if @channel.users.any? %>
+          <ul>
+          <% @channel.users.each do |user| %>
+            <li>
+            <%= user.name %>
+            </li>
+          <% end %>
+          </ul>
+        <% else %>
+          No users yet
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div id="content_section" class="right-0 flex-1 py-2 pl-40 m-2 text-gray-700">
+    <div data-target="channel.messages">
+      <%= render @channel.messages.order(created_at: :desc).limit(20).reverse %>
+    </div>
+
+    <div class="sticky bottom-0 bg-white">
+      <% if current_user.channels.include?(@channel) %>
+        <%= form_with model:[@channel, Message.new], 
+          data: { action: "ajax:success->channel#clearMessage" } do |form| %>
+          <%= form.text_field :body,
+            data: { target: "channel.newMessage" }, class: 'shadow appearance-none border rounded w-full py-2 px-3 mt-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+        <% end %>
+      <% else %>
+        <%= link_to "Join #{@channel.name}", channel_channel_users_path(@channel), method: :post %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

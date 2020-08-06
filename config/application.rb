@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ChatStimulusGorails
   class Application < Rails::Application
     config.active_job.queue_adapter = :sidekiq
-    config.application_name = 'Group Chat Test'
+    config.application_name = 'Ink2gether'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

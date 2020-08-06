@@ -2,7 +2,26 @@ module.exports = {
   prefix: "",
   important: false,
   separator: ":",
+
   theme: {
+    extend: {
+      colors: {
+        meetup: {
+          blue: "#00455D",
+          purple: "#1F24CC",
+        },
+        gray: {
+          750: "#3f495a",
+          850: "#222733",
+        },
+        "gray-spotify": {
+          700: "#282828",
+          800: "#181818",
+          900: "#121212",
+        },
+      },
+    },
+
     colors: {
       transparent: "transparent",
 
@@ -17,6 +36,7 @@ module.exports = {
         500: "#a0aec0",
         600: "#718096",
         700: "#4a5568",
+        750: "#3f495a",
         800: "#2d3748",
         900: "#1a202c",
       },
@@ -148,8 +168,6 @@ module.exports = {
       xl: "1280px",
     },
     fontFamily: {
-      display: ["Roboto", "sans-serif"],
-      body: ["Roboto", "sans-serif"],
       sans: [
         "-apple-system",
         "BlinkMacSystemFont",
@@ -173,8 +191,6 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
-      galada: ["Galada"],
-      niramit: ["Niramit"],
     },
     fontSize: {
       xs: "0.75rem",

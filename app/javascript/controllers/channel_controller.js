@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["messages", "newMessage"];
 
   connect() {
+    var elmnt = document.getElementById("messages_list");
+    elmnt.scrollIntoView(false);
     this.subscription = consumer.subscriptions.create(
       {
         channel: "MessageChannel",
@@ -24,9 +26,14 @@ export default class extends Controller {
   _received(data) {
     if (data.message) {
       this.messagesTarget.insertAdjacentHTML("beforeend", data.message);
+      var elmnt = document.getElementById("messages_list");
+      elmnt.scrollIntoView(false);
     }
   }
   clearMessage(event) {
     this.newMessageTarget.value = "";
+  }
+  focusMessage(event) {
+    window.alert("Updated");
   }
 }

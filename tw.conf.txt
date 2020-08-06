@@ -1,0 +1,13 @@
+const { colors } = require("tailwindcss/defaultTheme");
+const custom_colors = {
+  colors,
+  primary: {
+    colors.green,
+    default: colors.green[600],
+  },
+};
+module.exports = {
+  theme: {
+    colors: custom_colors,
+  },
+};
