@@ -1,0 +1,35 @@
+<div class="w-full overflow-hidden rounded shadow-lg">
+  <div class="p-2 mb-2 text-base font-bold text-gray-700 bg-gray-300">
+    Profile
+  </div>
+
+  <div class="flex flex-row">
+    <div class="p-2">
+      <%= gravatar_image_tag(current_user.email, alt: fullname(current_user), class: 'border border-gray-700 rounded-full') %>
+    </div>
+    <div class="p-2">
+      <p><%= fullname(current_user) %></p>
+      <p>@<%= current_user.username %></p>
+    </div>
+  </div>
+  <div class="p-2 text-xs">
+    <table class="w-full text-center table-auto">
+      <tr>
+        <th>Notes</th>
+        <th>Following</th>
+        <th>Followers</th>
+      </tr>
+      <tr>
+        <td>
+          <%= current_user.notes.count %>
+        </td>
+        <td>
+        n/a
+        </td>
+        <td>
+        n/a
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

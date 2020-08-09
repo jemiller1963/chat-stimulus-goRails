@@ -1,0 +1,29 @@
+<div class="container flex flex-row items-start justify-center mx-auto bg-gray-100">
+  <div class="w-1/4 p-10">
+    <div class="">
+      <%= render 'side_profile' %>
+    </div>
+  </div>
+  <div class="w-1/2 p-10">
+    <% if user_signed_in? %>
+      <%= render 'form', note: @note %>
+    <% end %>
+    <% @notes.each do |note| %>
+      <div class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+        <strong><%= note.user.fname %></strong>
+        <p class="mb-5 text-xs"><%= time_ago_in_words(note.created_at) %>&nbsp;ago</p>
+      <%= image_tag (note.image_url), id: "previewImage" if note.image_url%>
+            <p><%=link_to note.title, note %></p>
+            <p><%= note.body %></p>
+              <div class="">
+            <% if user_signed_in? && current_user.id == note.user_id %>
+                <div class="inline-block m-2"><%= link_to show_svg('pencil.svg'), edit_note_path(note), title: 'Edit' %></div>
+                <div class="inline-block m-2"><%= link_to show_svg('trash.svg'), note, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></div>
+            <% end %>
+            </div>
+      </div>
+  <% end %>
+  </div>
+  <div class="w-1/4">
+  </div>
+</div>

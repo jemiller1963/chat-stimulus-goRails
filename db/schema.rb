@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_230329) do
+ActiveRecord::Schema.define(version: 2020_08_09_031035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 2020_06_09_230329) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.boolean "active", default: true, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_note"
+    t.text "image_data"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,10 +71,12 @@ ActiveRecord::Schema.define(version: 2020_06_09_230329) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "username"
-    t.string "name"
+    t.string "fname"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lname"
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -71,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_06_09_230329) do
   add_foreign_key "channel_users", "users"
   add_foreign_key "messages", "channels"
   add_foreign_key "messages", "users"
+  add_foreign_key "notes", "users"
 end

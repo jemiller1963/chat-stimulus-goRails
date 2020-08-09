@@ -18,6 +18,8 @@
 @import "components/buttons";
 @import "components/forms";
 @import "components/headings";
+@import "components/dropzone";
+@import "components/image_uploader";
 @import "@fortawesome/fontawesome-free";
 
 @import "tailwindcss/utilities";
@@ -89,4 +91,19 @@
 .channel-bar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #3F495A;
+}
+/* ... */
+.upload-preview img {
+  display: block;
+  max-width: 100%;
+}
+
+.upload-preview {
+  margin-bottom: 10px;
+  display: inline-block;
+  height: 300px;
+}
+
+img[src=""] {
+  visibility: hidden;
 }

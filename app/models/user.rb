@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :channels, through: :channel_users
   has_many :messages, dependent: :destroy
 
+  has_many :notes, dependent: :destroy
 
   scope :admins, -> { where(admin: true) }
   scope :nonadmins, -> { where(admin: false) }
