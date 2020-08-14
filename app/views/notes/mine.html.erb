@@ -1,11 +1,20 @@
 <div class="w-1/2 px-2 pt-6 pb-8 mx-auto mb-4 text-lg">My Notes</div>
+
+
+  <div class="w-1/4 p-10">
+    <div class="">
+      <%= render 'side_profile' %>
+    </div>
+  </div>
+
+
 <% if @mine.any? %>
   <% @mine.each do |m| %>
 
 
     <div class="w-1/2 px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md">
 
-      <p>Note you are viewing: <strong><%= link_to m.title, m %></strong></p>
+      <p>mine you are viewing: <strong><%= link_to m.title, m %></strong></p>
 
       <p class="mb-3">
         <%= image_tag m.image_url if m.image %>
