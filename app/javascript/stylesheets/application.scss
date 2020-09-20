@@ -21,7 +21,7 @@
 @import "components/dropzone";
 @import "components/image_uploader";
 @import "@fortawesome/fontawesome-free";
-
+@import "components/_images";
 @import "tailwindcss/utilities";
 
 .chat::-webkit-scrollbar-track
@@ -107,3 +107,8 @@
 img[src=""] {
   visibility: hidden;
 }
+
+img, video {
+  max-width: 250px !important;
+}
+

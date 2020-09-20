@@ -1,10 +1,10 @@
 <div class="">
-    <%= form_with(model: note, local: true, 
+    <%= form_with(model: @note, local: true, 
                   class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 new_note",
                  id: "new_note") do |form| %>
     <% if note.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+        <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
 
         <ul>
           <% note.errors.full_messages.each do |message| %>

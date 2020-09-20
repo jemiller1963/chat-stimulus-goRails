@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # root to: 'channels#index'
 
   get 'mine', to: 'notes#mine'
-  root to: 'application#root'
+  root to: 'notes#index'
+  # root to: 'application#root'
   # mount Shrine.presign_endpoint(:cache) => '/images/upload'
 end

@@ -3,13 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def root
-    if current_user.present?
-      redirect_to '/notes'
-    else
-      render template: 'home/index'
-    end
-  end
+  # def root
+    # if current_user.present?
+      # redirect_to '/'
+    # else
+      # render template: 'home/index'
+    # end
+  # end
 
   protected
 
