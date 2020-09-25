@@ -1,50 +1,49 @@
-<div class="w-1/2 px-2 pt-6 pb-8 mx-auto mb-4 text-lg">My Notes</div>
+<div class="flex flex-1 w-1/4 px-2 pt-6 pb-8 mx-auto mb-4 text-lg">
 
+  <div class="p2">
 
-  <div class="w-1/4 p-10">
-    <div class="">
-      <%= render 'side_profile' %>
-    </div>
+      <%= gravatar_image_tag(current_user.email, alt: fullname(current_user), class: 'border border-gray-700 rounded-full h-24 w-auto') %>
   </div>
 
-  <div class="w-1/4 p-10">
-    <div class="">
-      <%= render 'form' %>
+
+  <div class="p-2 ml-6">
+      <p class="text-3xl"><%= fullname(current_user) %></p>
+      <p>@<%= current_user.username %></p>
     </div>
+
+</div>
+
+
+  <div class="flex flex-wrap mx-auto bg-gray-100 border border-red-500">
+    <% if @mine.any? %>
+      <% @mine.each do |m| %>
+
+
+        <div class="flex-none p-6 m-6 bg-white rounded-lg shadow-md">
+
+          <p>You are viewing: <strong><%= link_to m.title, m %></strong></p>
+
+          <p class="mb-3">
+            <%= image_tag m.image_url if m.image %>
+          </p>
+
+          <p class="text-sm">
+            Created by:
+            <strong> <%= fullname(m.user) %></strong>
+          </p>
+
+          <p class="mb-5 text-xs"><%= time_ago_in_words(m.created_at) %>&nbsp;ago</p>
+
+                 <div class="">
+            <% if user_signed_in? && current_user.id == m.user_id %>
+              <div class="inline-block m-2"><%= link_to show_svg('pencil.svg'), edit_note_path(m), title: 'Edit' %></div>
+              <div class="inline-block m-2"><%= link_to show_svg('trash.svg'), m, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    <% else %>
+      <p>Nothing yet</p>
+    <% end %>
   </div>
-
-<% if @mine.any? %>
-  <% @mine.each do |m| %>
-
-
-    <div class="w-1/2 px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md">
-
-      <p>mine you are viewing: <strong><%= link_to m.title, m %></strong></p>
-
-      <p class="mb-3">
-        <%= image_tag m.image_url if m.image %>
-      </p>
-
-      <p class="text-sm">
-        Created by:
-        <strong> <%= fullname(m.user) %></strong>
-      </p>
-
-      <p class="mb-5 text-xs"><%= time_ago_in_words(m.created_at) %>&nbsp;ago</p>
-
-      <p class="mb-3">
-        <%= m.body %>
-      </p>
-
-      <div class="">
-        <% if user_signed_in? && current_user.id == m.user_id %>
-          <div class="inline-block m-2"><%= link_to show_svg('pencil.svg'), edit_note_path(m), title: 'Edit' %></div>
-          <div class="inline-block m-2"><%= link_to show_svg('trash.svg'), m, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-
-<% else %>
-  <p>Nothing yet</p>
-<% end %>

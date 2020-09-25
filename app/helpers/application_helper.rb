@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def fullname(user)
     if user.fname && user.lname
-      [user.fname, user.lname].compact.join(' ')
+      [user.fname.titleize, user.lname.titleize].compact.join(' ')
     end
   end 
 end
