@@ -27,6 +27,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate', '~> 2.7', '>= 2.7.1'
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -49,15 +50,15 @@ gem 'rails', '~> 6.0', '>= 6.0.2.2'
 gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 group :development, :test do
   gem 'better_errors'
-  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'faker', '~> 1.9', '>= 1.9.4'
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
+  gem 'faker', '~> 1.9', '>= 1.9.4'
   gem 'pry', '~> 0.12.2'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
 end
 
 group :test do
-  gem 'shoulda', '~> 3.6'
   gem 'capybara-screenshot'
   gem 'database_cleaner', '~> 1.7'
+  gem 'shoulda', '~> 3.6'
 end
