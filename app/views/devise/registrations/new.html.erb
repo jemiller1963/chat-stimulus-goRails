@@ -21,6 +21,13 @@
     </div>
 
     <div class="mb-6">
+      <%= f.label :memos, class: "label" %>
+      <%= f.text_area :memos, cols: "30", rows: "10",
+        class: "input"
+      %>
+    </div>
+
+    <div class="mb-6">
       <div class="flex">
         <%= f.label :password, class: "label" %>
         <% if @minimum_password_length %>

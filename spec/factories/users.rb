@@ -9,8 +9,8 @@
 #  encrypted_password     :string           default(""), not null
 #  fname                  :string
 #  lname                  :string
+#  memos                  :string
 #  name                   :string           default(""), not null
-#  notes                  :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -20,6 +20,7 @@
 #
 # Indexes
 #
+#  index_users_on_approved              (approved)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #

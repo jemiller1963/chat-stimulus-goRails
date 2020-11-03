@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   # get 'users/index', to: 'users#index', as: 'members' # This is lists all userss
   # get 'users/show/:id', to: 'users#show', as: 'member' # This shows specific users from index
   # get 'users/:id', to: 'users#member', as:'member_home'  # This is the users landing page
-  
+
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  resources :members
 
   resources :notes
   # resources :users

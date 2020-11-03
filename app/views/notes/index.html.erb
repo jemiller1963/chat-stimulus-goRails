@@ -1,7 +1,7 @@
 <div class="flex flex-wrap mx-auto bg-gray-100">
   <% @notes.each do |note| %>
     <div class="flex-none p-6 m-6 bg-white rounded-lg shadow-md">
-      <strong><%= note.user.fname %></strong>
+      <strong><%= link_to note.user.fname, member_path(note.user.id) %></strong>
       <p class="mb-5 text-xs"><%= time_ago_in_words(note.created_at) %>&nbsp;ago</p>
       <%= image_tag (note.image_url), id: "previewImage", class: "" if note.image_url%>
       <p><%=link_to note.title, note %></p>

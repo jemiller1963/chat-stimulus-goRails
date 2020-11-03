@@ -1,0 +1,58 @@
+<div class="flex flex-1 w-1/4 px-2 pt-6 pb-8 mx-auto mb-4 text-lg">
+
+  <div class="p2">
+
+    <%= gravatar_image_tag(@user.email, alt: fullname(@user), class: 'border border-gray-700 rounded-full h-24 w-auto') %>
+  </div>
+
+
+  <div class="p-2 ml-6">
+    <p class="text-3xl"><%= fullname(@user) %></p>
+    <p>@<%= @user.username %></p>
+  </div>
+
+</div>
+
+
+<div class="flex flex-wrap justify-center w-11/12 px-3 mx-auto bg-gray-100 border-b-2 border-gray-400">
+  <div class="ml-25 lg:flex-grow">
+    <%= link_to "Inks", '#', class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %><%= link_to "12", '#', class: "-ml-3 mr-6 text-gray-500" %>
+    <%= link_to "Collections", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %><%= link_to "12", '#', class: "-ml-3 mr-6 text-gray-500" %>
+    <%= link_to "Liked", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %><%= link_to "12", '#', class: "-ml-3 mr-6 text-gray-500" %>
+    <%= link_to "About", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %><%= link_to "12", '#', class: "-ml-3 mr-6 text-gray-500" %>
+  </div>
+</div>
+
+<div class="flex flex-wrap justify-center mx-auto bg-gray-100">
+  <% if @mine.any? %>
+    <% @mine.each do |m| %>
+
+
+      <div class="flex-none p-6 m-6 bg-white rounded-lg shadow-md">
+
+        <p>You are viewing: <strong><%= link_to m.title, m %></strong></p>
+
+        <p class="mb-3">
+          <%= image_tag m.image_url if m.image %>
+        </p>
+
+        <p class="text-sm">
+          Created by:
+          <strong> <%= fullname(m.user) %></strong>
+        </p>
+
+        <p class="mb-5 text-xs"><%= time_ago_in_words(m.created_at) %>&nbsp;ago</p>
+
+        <div class="">
+          <% if user_signed_in? && @user.id == m.user_id %>
+            <div class="inline-block m-2"><%= link_to show_svg('pencil.svg'), edit_note_path(m), title: 'Edit' %></div>
+            <div class="inline-block m-2"><%= link_to show_svg('trash.svg'), m, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>Nothing yet</p>
+  <% end %>
+</div>
