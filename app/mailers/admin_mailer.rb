@@ -4,6 +4,6 @@ class AdminMailer < Devise::Mailer
 
   def new_user_waiting_for_approval(email)
     @email = email
-    mail(to: 'admin@email.com', subject: 'New User Awaiting Admin Approval')
+    mail(to: 'jemiller1963@gmail.com', subject: 'New User Awaiting Admin Approval')
   end
 end
