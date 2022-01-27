@@ -58,7 +58,7 @@ gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'rails', '~> 6.0', '>= 6.0.2.2'
-gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+gem 'sidekiq', '~> 6.4'
 group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
